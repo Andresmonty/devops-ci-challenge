@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
 
-      - run: sudo npm install
+      - run: npm instal --force
 
       - run: npm run lint
 
