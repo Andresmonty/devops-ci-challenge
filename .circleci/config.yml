@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:14
+    parallelism: 4
 
     steps:
       - checkout
@@ -24,10 +25,6 @@ jobs:
       - run:
           name: Install dependencies
           command: npm install
-
-      - run:
-          name: Set working directory
-          command: cd $CIRCLE_WORKING_DIRECTORY
 
       - run:
           name: Linter (ESLint)
