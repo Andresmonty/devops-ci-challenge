@@ -26,6 +26,10 @@ jobs:
           command: npm install
 
       - run:
+          name: Set working directory
+          command: cd $CIRCLE_WORKING_DIRECTORY
+
+      - run:
           name: Linter (ESLint)
           command: npm run lint
 
