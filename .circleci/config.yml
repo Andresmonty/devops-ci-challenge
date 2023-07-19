@@ -6,8 +6,6 @@ jobs:
     parallelism: 4
     steps:
       - checkout
-      - run:
-          command: ls /home/circleci/my-project/src/
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
