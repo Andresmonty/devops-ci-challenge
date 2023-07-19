@@ -8,10 +8,11 @@ jobs:
       - checkout
 
       - run:
-          name: Install Node.js and npm
+          name: Install NVM and Node.js
           command: |
-            curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-            sudo apt-get install -y nodejs
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+            source ~/.nvm/nvm.sh
+            nvm install 14
 
       - run:
           name: Install dependencies
