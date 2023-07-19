@@ -7,12 +7,19 @@ jobs:
     steps:
       - checkout
 
+      - setup_remote_docker:
+          version: 20.10.7
+
       - run:
           name: Install NVM and Node.js
           command: |
             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
             source ~/.nvm/nvm.sh
             nvm install 14
+
+      - run:
+          name: Set working directory
+          command: cd $CIRCLE_WORKING_DIRECTORY
 
       - run:
           name: Install dependencies
