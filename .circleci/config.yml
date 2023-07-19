@@ -3,17 +3,13 @@ jobs:
   build:
     docker:
       - image: circleci/node:14
+    parallelism: 4
 
     steps:
       - checkout
 
-      - run:
-          name: Set working directory
-          command: cd $CIRCLE_WORKING_DIRECTORY
-
-      - run:
-          name: Verify working directory
-          command: ls -la $CIRCLE_WORKING_DIRECTORY
+      - setup_remote_docker:
+          version: 20.10.7
 
       - run:
           name: Install NVM and Node.js
@@ -21,6 +17,10 @@ jobs:
             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
             source ~/.nvm/nvm.sh
             nvm install 14
+
+      - run:
+          name: Set working directory
+          command: cd $CIRCLE_WORKING_DIRECTORY
 
       - run:
           name: Install dependencies
