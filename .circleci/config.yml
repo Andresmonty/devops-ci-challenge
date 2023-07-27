@@ -26,6 +26,11 @@ jobs:
           name: Install dependencies
           command: npm install
 
+      working_directory: ~/home/circleci/project/
+    steps:
+      - checkout:
+      path: ~/project
+
       - run:
           name: Linter (ESLint)
           command: npm run lint
