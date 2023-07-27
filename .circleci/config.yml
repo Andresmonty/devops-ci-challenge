@@ -25,12 +25,12 @@ jobs:
           name: Install dependencies
           command: npm install
 
-      # Linter (ESLint)
+      # Linter (ESLint) and Debug Output
       - run:
           name: Linter (ESLint)
-          command: npm run lint
-          command: echo "Working Directory: $PWD"
-          
+          command: |
+            npm run lint
+            echo "Working Directory: $PWD"
 
       # Formatter (Prettier)
       - run:
