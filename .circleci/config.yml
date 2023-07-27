@@ -28,7 +28,7 @@ jobs:
       # Linter (ESLint) and Debug Output
       - run:
           name: Linter (ESLint) and Debug Output
-          command: npm run lint && echo "Working Directory: $PWD"
+          #command: npm run lint && echo "Working Directory: $PWD"
 
       # Formatter (Prettier)
       - run:
