@@ -10,7 +10,7 @@ jobs:
       # Set the working directory to the repository root
       - run:
           name: Set working directory
-          command: cd $CIRCLE_WORKING_DIRECTORY
+          command: cd $HOME/codebase/rdicidr-0.1.0/src/
 
       # Install NVM and Node.js
       - run:
