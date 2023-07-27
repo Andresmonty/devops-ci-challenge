@@ -27,7 +27,7 @@ jobs:
 
       # Linter (ESLint) and Debug Output
       - run:
-          name: Linter (ESLint)
+          name: Linter (ESLint) and Debug Output
           command: |
             npm run lint
             echo "Working Directory: $PWD"
