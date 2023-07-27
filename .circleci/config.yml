@@ -10,7 +10,7 @@ jobs:
       # Set the working directory to the repository root
       - run:
           name: Set working directory
-          command: cd $HOME/codebase/rdicidr-0.1.0/src/
+          command: echo "Working Directory: $PWD"
 
       # Install NVM and Node.js
       - run:
@@ -29,6 +29,8 @@ jobs:
       - run:
           name: Linter (ESLint)
           command: npm run lint
+          command: echo "Working Directory: $PWD"
+          
 
       # Formatter (Prettier)
       - run:
