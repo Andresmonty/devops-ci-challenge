@@ -3,14 +3,16 @@ jobs:
   build:
     docker:
       - image: circleci/node:14
-    parallelism: 4
 
     steps:
       - checkout
 
-      - setup_remote_docker:
-          version: 20.10.7
+      # Set the working directory to the repository root
+      - run:
+          name: Set working directory
+          command: cd $CIRCLE_WORKING_DIRECTORY
 
+      # Install NVM and Node.js
       - run:
           name: Install NVM and Node.js
           command: |
@@ -18,31 +20,27 @@ jobs:
             source ~/.nvm/nvm.sh
             nvm install 14
 
-      - run:
-          name: Set working directory
-          command: cd $CIRCLE_WORKING_DIRECTORY
-
+      # Install dependencies
       - run:
           name: Install dependencies
           command: npm install
 
-      working_directory: ~/home/circleci/project/
-    steps:
-      - checkout:
-      path: ~/project
-
+      # Linter (ESLint)
       - run:
           name: Linter (ESLint)
           command: npm run lint
 
+      # Formatter (Prettier)
       - run:
           name: Formatter (Prettier)
           command: npm run prettier
 
+      # Test (Jest)
       - run:
           name: Test (Jest)
           command: CI=true npm run test
 
+      # Build
       - run:
           name: Build
           command: npm run build
