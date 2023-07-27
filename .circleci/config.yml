@@ -10,7 +10,7 @@ jobs:
       # Set the working directory to the repository root
       - run:
           name: Set working directory
-          command: echo "Working Directory: $PWD"
+          #command: echo "Working Directory: $PWD"
 
       # Install NVM and Node.js
       - run:
@@ -28,9 +28,7 @@ jobs:
       # Linter (ESLint) and Debug Output
       - run:
           name: Linter (ESLint) and Debug Output
-          command: |
-            npm run lint
-            echo "Working Directory: $PWD"
+          command: npm run lint && echo "Working Directory: $PWD"
 
       # Formatter (Prettier)
       - run:
