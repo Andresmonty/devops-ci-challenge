@@ -7,12 +7,6 @@ jobs:
     steps:
       - checkout
 
-      # Set the working directory to the repository root
-      - run:
-          name: Set working directory
-          #command: echo "Working Directory: $PWD"
-
-      # Install NVM and Node.js
       - run:
           name: Install NVM and Node.js
           command: |
@@ -20,27 +14,22 @@ jobs:
             source ~/.nvm/nvm.sh
             nvm install 14
 
-      # Install dependencies
       - run:
           name: Install dependencies
           command: npm install
 
-      # Linter (ESLint) and Debug Output
       - run:
-          name: Linter (ESLint) and Debug Output
-          #command: npm run lint && echo "Working Directory: $PWD"
+          name: Linter (ESLint)
+          command: npm run lint
 
-      # Formatter (Prettier)
       - run:
           name: Formatter (Prettier)
           command: npm run prettier
 
-      # Test (Jest)
       - run:
           name: Test (Jest)
           command: CI=true npm run test
 
-      # Build
       - run:
           name: Build
           command: npm run build
