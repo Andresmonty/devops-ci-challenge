@@ -4,12 +4,8 @@ jobs:
     docker:
       - image: circleci/node:14
 
-    working_directory: ~/codebase/rdicidr-0.1.0/src/
     steps:
       - checkout
-      - run: cd ~/src && npm install
-      - run: cd ~/src && npm run lint
-      - run: cd ~/src && npm run build
 
       - run:
           name: Install NVM and Node.js
@@ -17,6 +13,14 @@ jobs:
             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
             source ~/.nvm/nvm.sh
             nvm install 14
+
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - run:
+          name: Linter (ESLint)
+          command: npm run lint 
 
       - run:
           name: Formatter (Prettier)
