@@ -18,9 +18,16 @@ jobs:
           name: Install dependencies
           command: npm install
 
-      - run:
-          name: Linter (ESLint)
-          command: npm run lint 
+      # - run:
+      #     name: Linter (ESLint)
+      #     command: npm run lint
+    working_directory: ~/codebase/rdicidr-0.1.0/src/
+    
+    steps:
+      - checkout
+      - run: cd codebase/rdicidr-0.1.0/src/   && npm install
+      - run: cd codebase/rdicidr-0.1.0/src/   && npm run lint
+      - run: cd codebase/rdicidr-0.1.0/src/   && npm run build 
 
       - run:
           name: Formatter (Prettier)
