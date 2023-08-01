@@ -20,7 +20,7 @@ jobs:
 
       - run:
           name: Linter (ESLint)
-          command: npm run lint
+          command: npm run lint 
 
       - run:
           name: Formatter (Prettier)
